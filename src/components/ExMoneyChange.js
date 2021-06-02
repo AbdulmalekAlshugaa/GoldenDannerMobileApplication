@@ -17,7 +17,6 @@ function ExChangeMoney({ title, time, date, price, percent, image }) {
           <View style={styles.pageIcon}></View>
           <View style={styles.pageIcon}></View>
         </View>
-
         <Text style={styles.textPrice}>{price}</Text>
         <View style={styles.counteryFlage}></View>
       </View>
@@ -29,10 +28,10 @@ const styles = StyleSheet.create({
   cards: {
     height: 180,
     backgroundColor: "#DAA520",
-    borderRadius: 10,
+    borderRadius: 5,
     margin: 10,
     padding: 10,
-    marginVertical: 30,
+    marginVertical: 10,
   },
   title: {
     alignItems: "center",

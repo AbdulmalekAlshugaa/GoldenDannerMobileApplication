@@ -4,12 +4,9 @@ import {
   StyleSheet,
   Text,
   View,
-  Image,
   FlatList,
   Dimensions,
   SafeAreaView,
-  TouchableWithoutFeedback,
-  TouchableOpacity,
 } from "react-native";
 import Card from "../components/Card";
 import categories from "../constants/categories";
