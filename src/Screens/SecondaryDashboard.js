@@ -12,12 +12,12 @@ import Card from "../components/Card";
 import categories from "../constants/categories";
 const WIDTH = Dimensions.get("window").width;
 
-function Main({ navigation }) {
+function SecondaryDashboard({ navigation }) {
   const [selectedId, setSelectedId] = useState(null);
 
   const whichAPiShouldLoad = (cardId) => {
     if (cardId == 1) {
-      navigation.navigate("MoneyExChangeScreen", { id: cardId });
+      console.log("I am number one ");
     } else if (cardId == 2) {
       console.log("Hi  Id " + cardId);
     }
@@ -49,7 +49,6 @@ function Main({ navigation }) {
         data={categories}
         renderItem={renderItem}
         keyExtractor={(item) => item.id}
-        numColumns={2}
       />
     </SafeAreaView>
   );
@@ -102,4 +101,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Main;
+export default SecondaryDashboard;

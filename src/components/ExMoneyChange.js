@@ -2,7 +2,7 @@ import React from "react";
 import { StyleSheet, View, Text, Image } from "react-native";
 import AppText from "./AppText";
 
-function ExChangeMoney({ title, time, date, price, percent, image }) {
+function ExChangeMoney({ title, time, date, price, percent, flageImage }) {
   return (
     <View style={styles.cards}>
       <View style={styles.title}>
@@ -13,12 +13,23 @@ function ExChangeMoney({ title, time, date, price, percent, image }) {
         <Text>{date}</Text>
       </View>
       <View style={styles.rowElements}>
-        <View>
+        <View
+          style={{
+            flexDirection: "row",
+            justifyContent: "flex-end",
+            alignItems: "center",
+          }}
+        >
           <View style={styles.pageIcon}></View>
           <View style={styles.pageIcon}></View>
         </View>
         <Text style={styles.textPrice}>{price}</Text>
-        <View style={styles.counteryFlage}></View>
+        <Image
+          source={{
+            uri: flageImage,
+          }}
+          style={styles.counteryFlage}
+        />
       </View>
       <Text style={styles.textPicentaage}>{percent}</Text>
     </View>
@@ -27,17 +38,16 @@ function ExChangeMoney({ title, time, date, price, percent, image }) {
 const styles = StyleSheet.create({
   cards: {
     height: 180,
-    backgroundColor: "#DAA520",
-    borderRadius: 5,
-    margin: 10,
-    padding: 10,
-    marginVertical: 10,
+    backgroundColor: "#FFFFFF",
+    borderRadius: 1,
+    marginVertical: 1,
+    marginTop: 5,
   },
   title: {
     alignItems: "center",
+    marginVertical: 10,
   },
   rowElements: {
-    marginTop: 10,
     flexDirection: "row",
     justifyContent: "space-around",
   },
@@ -46,14 +56,13 @@ const styles = StyleSheet.create({
     width: 30,
     borderRadius: 15,
     backgroundColor: "yellow",
-    marginStart: 10,
-    marginEnd: 20,
+    marginEnd: 10,
   },
   counteryFlage: {
     height: 80,
     width: 80,
     borderRadius: 15,
-    backgroundColor: "yellow",
+    backgroundColor: "red",
     marginStart: 10,
     marginEnd: 20,
   },
@@ -64,8 +73,8 @@ const styles = StyleSheet.create({
   },
   textPicentaage: {
     lineHeight: 22,
-
     alignSelf: "center",
+    paddingBottom: 20,
   },
 });
 
