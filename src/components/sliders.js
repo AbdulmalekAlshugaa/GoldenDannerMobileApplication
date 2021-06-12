@@ -64,7 +64,7 @@ function doneButton() {
   );
 }
 
-export default function App() {
+export default function Slider() {
   const [showRealApp, setShowRealApp] = useState(false);
 
   return (

@@ -1,7 +1,7 @@
 import { create } from "apisauce";
 
 const apiClent = create({
-  baseURL: "https://danner2.herokuapp.com/api/v1/",
+  baseURL: "http://192.168.0.114:3000/api/v1/",
 });
 
 export default apiClent;

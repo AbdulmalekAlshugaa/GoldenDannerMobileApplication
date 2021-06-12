@@ -1,3 +1,4 @@
+// Tripoil main page
 import { StatusBar } from "expo-status-bar";
 import React, { useState } from "react";
 import {
@@ -9,24 +10,18 @@ import {
   SafeAreaView,
   Image,
 } from "react-native";
-import Card from "../components/Card";
-import categories from "../constants/categories";
+import Card from "../components/VerticalCard";
+import categories from "../constants/Tripoli";
 const WIDTH = Dimensions.get("window").width;
 
-function Main({ navigation }) {
+function Tripoli({ navigation }) {
   const [selectedId, setSelectedId] = useState(null);
 
   const whichAPiShouldLoad = (cardId) => {
     if (cardId == 1) {
-      navigation.navigate("Cards", { id: cardId });
+      console.log("jkdasf");
     } else if (cardId == 2) {
-      navigation.navigate("News", { id: cardId });
-    } else if (cardId == 3) {
-      navigation.navigate("Tripoli", { id: cardId });
-    } else if (cardId == 4) {
-      navigation.navigate("Benghazi", { id: cardId });
-    } else if (cardId == 6) {
-      navigation.navigate("MoneyExChangeScreen", { id: cardId });
+      navigation.navigate("MoneyExChangeScreen", { API: "TripExAPI" });
     }
     return cardId;
   };
@@ -60,7 +55,6 @@ function Main({ navigation }) {
         data={categories}
         renderItem={renderItem}
         keyExtractor={(item) => item.id}
-        numColumns={2}
       />
     </SafeAreaView>
   );
@@ -113,4 +107,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Main;
+export default Tripoli;

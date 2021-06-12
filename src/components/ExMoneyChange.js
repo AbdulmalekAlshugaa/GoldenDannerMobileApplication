@@ -1,5 +1,6 @@
 import React from "react";
 import { StyleSheet, View, Text, Image } from "react-native";
+import COLORS from "../constants/colors";
 import AppText from "./AppText";
 
 function ExChangeMoney({ title, time, date, price, percent, flageImage }) {
@@ -41,7 +42,6 @@ const styles = StyleSheet.create({
     backgroundColor: "#FFFFFF",
     borderRadius: 1,
     marginVertical: 1,
-    marginTop: 5,
   },
   title: {
     alignItems: "center",
@@ -62,7 +62,7 @@ const styles = StyleSheet.create({
     height: 80,
     width: 80,
     borderRadius: 15,
-    backgroundColor: "red",
+    backgroundColor: COLORS.grey,
     marginStart: 10,
     marginEnd: 20,
   },

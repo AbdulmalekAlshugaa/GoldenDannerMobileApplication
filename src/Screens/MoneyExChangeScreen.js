@@ -1,28 +1,26 @@
 import { StatusBar } from "expo-status-bar";
 import React, { useState, useEffect } from "react";
-import {
-  StyleSheet,
-  View,
-  FlatList,
-  Dimensions,
-  TouchableWithoutFeedback,
-} from "react-native";
+import { StyleSheet, FlatList, Dimensions, Text } from "react-native";
+
 import AppText from "../components/AppText";
 import ExChangeMoney from "../components/ExMoneyChange";
 import listingCards from "../api/listingCards";
 import Screen from "../components/Screen";
+import AppButton from "../components/AppButtons";
+import useApi from "../hooks/useApi";
 const WIDTH = Dimensions.get("window").width;
 
-function MoneyExChange({ route }) {
-  const [exChangeListings, setExChangeListings] = useState([]);
-  const [refreshing, setRefreshing] = useState(false);
-  const loadExchnageMoney = async () => {
-    const response = await listingCards.getCardListings();
+let whichApi = "";
 
-    setExChangeListings(response.data.result);
-  };
+function MoneyExChange({ route }) {
+  // reuse able hooks whihc will take care in all the networking request
+  const moneyExChangeListingApi = useApi(listingCards.getCardListings);
+  const [refreshing, setRefreshing] = useState(false);
+
+  // whichApi = route.params.API;
   useEffect(() => {
-    loadExchnageMoney();
+    console.log(moneyExChangeListingApi.data);
+    moneyExChangeListingApi.request();
   }, []);
   const renderItem = ({ item }) => (
     <ExChangeMoney
@@ -31,23 +29,25 @@ function MoneyExChange({ route }) {
       date={item.date}
       price={item.price}
       percent={"(" + item.percent + ")"}
-      flageImage={item.Image}
+      flageImage={item.image}
     />
   );
   return (
     <Screen style={styles.container}>
-      <View>
-        <View style={styles.title}>
-          <AppText passText="Ex Money" />
-        </View>
-      </View>
+      {moneyExChangeListingApi.error && (
+        <>
+          <AppText>Could't retrive the data</AppText>
+          <Text>Could't retrive the data</Text>
+          <AppButton title="Retry" onPress={moneyExChangeListingApi.request} />
+        </>
+      )}
       <FlatList
         contentContainerStyle={{ paddingBottom: 80 }}
-        data={exChangeListings}
+        data={moneyExChangeListingApi.data}
         renderItem={renderItem}
-        keyExtractor={(item) => item.id}
+        keyExtractor={(item) => item._id}
         refreshing={refreshing}
-        onRefresh={loadExchnageMoney}
+        onRefresh={moneyExChangeListingApi.data}
       />
     </Screen>
   );
@@ -57,16 +57,7 @@ const styles = StyleSheet.create({
   container: {
     backgroundColor: "#DCDCDC",
     shadowColor: "#000",
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
-    shadowOpacity: 0.25,
-    shadowRadius: 3.84,
-
-    elevation: 5,
   },
-
   title: {
     height: 50,
     justifyContent: "center",

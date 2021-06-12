@@ -1,16 +1,12 @@
 import React, { useState } from "react";
 import { StyleSheet, View, Text } from "react-native";
-import Icon from "react-native-vector-icons/Ionicons";
-import ExChangeMoney from "./src/Screens/MoneyExChangeScreen";
-import TestingImage from "./src/components/TestingImage";
-import StackNav from "./src/Screens/StackAndNiv";
-import Main from "./src/Screens/Main";
-import AppIntroSlider from "react-native-app-intro-slider";
+import MainNav from "./src/navigator/mainNavation";
+import Tripoil from "./src/Screens/MoneyExChangeScreen";
 
 // build a function to ren
 
 export default function App() {
-  return <StackNav />;
+  return <Tripoil />;
 }
 
 const styles = StyleSheet.create({});

@@ -1,33 +1,33 @@
 const categories = [
   {
     id: "1",
-    title: "Dollers",
-    image: require("../../assets/dollars.jpg"),
+    title: "Cards",
+    image: require("../../assets/creditcard.png"),
   },
   {
     id: "2",
-    title: "Real",
-    image: require("../../assets/dollars.jpg"),
+    title: "News",
+    image: require("../../assets/stockmarket.png"),
   },
   {
     id: "3",
-    title: "Libay",
-    image: require("../../assets/dollars.jpg"),
+    title: "Tripoli",
+    image: require("../../assets/bank.png"),
   },
   {
     id: "4",
-    title: "None",
-    image: require("../../assets/dollars.jpg"),
+    title: "Benghazi",
+    image: require("../../assets/banking.png"),
   },
   {
     id: "5",
-    title: "Last one ",
-    image: require("../../assets/dollars.jpg"),
+    title: "Gold",
+    image: require("../../assets/cashflow.png"),
   },
   {
     id: "6",
-    title: "Last one ",
-    image: require("../../assets/dollars.jpg"),
+    title: "Ex Money ",
+    image: require("../../assets/stockmarket.png"),
   },
 ];
 
