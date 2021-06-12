@@ -12,6 +12,7 @@ import {
 } from "react-native";
 import Card from "../components/VerticalCard";
 import categories from "../constants/BenghaziCategories";
+import helperParam from "../constants/helperParam";
 const WIDTH = Dimensions.get("window").width;
 
 function Tripoli({ navigation }) {
@@ -19,9 +20,19 @@ function Tripoli({ navigation }) {
 
   const whichAPiShouldLoad = (cardId) => {
     if (cardId == 1) {
-      console.log("jkdasf");
+      navigation.navigate(helperParam.MoneyExChangeScreen, {
+        API: helperParam.BenExMoney,
+      });
     } else if (cardId == 2) {
-      navigation.navigate("MoneyExChangeScreen", { API: "TripExAPI" });
+      navigation.navigate(helperParam.MoneyExChangeScreen, {
+        API: helperParam.BenGolden,
+      });
+    } else if (cardId == 3) {
+      navigation.navigate(helperParam.MoneyExChangeScreen, {
+        API: helperParam.BenTransfer,
+      });
+    } else if (cardId == 4) {
+      console.log("under developmet");
     }
     return cardId;
   };

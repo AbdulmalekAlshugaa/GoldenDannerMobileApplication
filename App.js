@@ -6,7 +6,7 @@ import Tripoil from "./src/Screens/MoneyExChangeScreen";
 // build a function to ren
 
 export default function App() {
-  return <Tripoil />;
+  return <MainNav />;
 }
 
 const styles = StyleSheet.create({});

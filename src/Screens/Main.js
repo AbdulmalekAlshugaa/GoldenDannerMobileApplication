@@ -11,6 +11,7 @@ import {
 } from "react-native";
 import Card from "../components/Card";
 import categories from "../constants/categories";
+import helperParam from "../constants/helperParam";
 const WIDTH = Dimensions.get("window").width;
 
 function Main({ navigation }) {
@@ -25,8 +26,14 @@ function Main({ navigation }) {
       navigation.navigate("Tripoli", { id: cardId });
     } else if (cardId == 4) {
       navigation.navigate("Benghazi", { id: cardId });
+    } else if (cardId == 5) {
+      navigation.navigate(helperParam.MoneyExChangeScreen, {
+        API: helperParam.globalGolden,
+      });
     } else if (cardId == 6) {
-      navigation.navigate("MoneyExChangeScreen", { id: cardId });
+      navigation.navigate(helperParam.MoneyExChangeScreen, {
+        API: helperParam.ExGloable,
+      });
     }
     return cardId;
   };

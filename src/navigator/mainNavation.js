@@ -21,7 +21,7 @@ const StackNavigator = () => (
     <Stack.Screen
       name="MoneyExChangeScreen"
       component={ExChnageMoneyScreen}
-      options={{ title: "Ex Money" }}
+      options={({ route }) => ({ title: route.params.API })}
     />
     <Stack.Screen name="Cards" component={Cards} options={{ title: "Cards" }} />
     <Stack.Screen name="News" component={News} options={{ title: "News" }} />

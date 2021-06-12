@@ -8,19 +8,38 @@ import listingCards from "../api/listingCards";
 import Screen from "../components/Screen";
 import AppButton from "../components/AppButtons";
 import useApi from "../hooks/useApi";
+import helperParam from "../constants/helperParam";
 const WIDTH = Dimensions.get("window").width;
 
 let whichApi = "";
+let listingData = [];
 
 function MoneyExChange({ route }) {
   // reuse able hooks whihc will take care in all the networking request
-  const moneyExChangeListingApi = useApi(listingCards.getCardListings);
+  whichApi = route.params.API;
+
+  if (whichApi == helperParam.TripGolden) {
+    listingData = useApi(listingCards.tripGolden);
+  } else if (whichApi == helperParam.TripExAPI) {
+    listingData = useApi(listingCards.listingTripExMoney);
+  } else if (whichApi == helperParam.BenExMoney) {
+    listingData = useApi(listingCards.benExChangeMoney);
+  } else if (whichApi == helperParam.BenGolden) {
+    listingData = useApi(listingCards.benGolden);
+  } else if (whichApi == helperParam.BenTransfer) {
+    listingData = useApi(listingCards.benTransfer);
+  } else if (whichApi == helperParam.ExGloable) {
+    listingData = useApi(listingCards.getCardListings);
+  } else if (whichApi == helperParam.globalGolden) {
+    listingData = useApi(listingCards.gloableGolden);
+  } else {
+    console.log("Error");
+  }
+
   const [refreshing, setRefreshing] = useState(false);
 
-  // whichApi = route.params.API;
   useEffect(() => {
-    console.log(moneyExChangeListingApi.data);
-    moneyExChangeListingApi.request();
+    listingData.request();
   }, []);
   const renderItem = ({ item }) => (
     <ExChangeMoney
@@ -34,20 +53,20 @@ function MoneyExChange({ route }) {
   );
   return (
     <Screen style={styles.container}>
-      {moneyExChangeListingApi.error && (
+      {listingData.error && (
         <>
           <AppText>Could't retrive the data</AppText>
           <Text>Could't retrive the data</Text>
-          <AppButton title="Retry" onPress={moneyExChangeListingApi.request} />
+          <AppButton title="Retry" onPress={listingData.request} />
         </>
       )}
       <FlatList
         contentContainerStyle={{ paddingBottom: 80 }}
-        data={moneyExChangeListingApi.data}
+        data={listingData.data}
         renderItem={renderItem}
         keyExtractor={(item) => item._id}
         refreshing={refreshing}
-        onRefresh={moneyExChangeListingApi.data}
+        onRefresh={listingData.request}
       />
     </Screen>
   );
